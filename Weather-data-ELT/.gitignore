@@ -1,0 +1,29 @@
+# .env
+.env
+.env.*
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Project data
+data/
+
+# dbt
+profiles.yml
+logs/
+target/
+dbt_packages/
+
+# Airflow
+airflow/logs/
+
+# Documentation
+docs/
