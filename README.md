@@ -65,39 +65,12 @@ flowchart LR
 
 ### Medallion layers
 
-```mermaid
-flowchart TB
-  B["Bronze / raw<br/>API payloads + typed raw tables"]
-  S["Silver / staging<br/>cleaned, renamed, typed views"]
-  G["Gold / marts<br/>dims, facts, month-grain marts"]
-
-  B --> S --> G
-```
-
 | Layer | Schema | Role |
 |-------|--------|------|
 | Bronze | `raw` | Landed API/CSV data + JSONB payload where applicable |
 | Silver | `staging` | Cleaned / renamed models (dbt) |
 | Gold | `marts` | `dim_*`, `fct_*`, weather & species-richness marts |
 | Meta | `meta` | ETL run log |
-
-### Airflow orchestration
-
-```mermaid
-flowchart LR
-  E[extract_data] --> L[load_data] --> R[dbt_run] --> T[dbt_test]
-```
-
-### Analytics join (month grain)
-
-Weather and bird marts meet in Power BI on **country + `year_month_key`** (Vietnam, 2023):
-
-```mermaid
-flowchart LR
-  W[mart_weather_by_month] --> K["year_month_key + country_code"]
-  S[mart_species_richness_by_month] --> K
-  K --> D[Power BI<br/>temp / precip vs observations and richness]
-```
 
 ![Weather & Bird Observations Dashboard](./screenshots/weather_gbif_dashboard.png)
 
