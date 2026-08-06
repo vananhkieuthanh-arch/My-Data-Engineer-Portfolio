@@ -47,8 +47,8 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 
 This project uses open data provided by:
 
-* **[Open-Meteo](https://open-meteo.com/)** — Historical weather API (temperature and precipitation) for Vietnam, 2023. Open-Meteo weather data is free for non-commercial use under the [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license / Open-Meteo terms.
-* **[GBIF](https://www.gbif.org/)** — Global Biodiversity Information Facility occurrence records (Aves / birds in Vietnam, 2023), accessed via the GBIF API and download services. GBIF data are shared by publishers under their respective licenses; please cite GBIF and follow [GBIF citation guidelines](https://www.gbif.org/citation-guidelines) when reusing.
+* Open-Meteo: https://open-meteo.com/
+* GBIF: https://www.gbif.org/
 
 These sources are acknowledged with thanks; any analysis and dashboards in this portfolio are my own work and do not represent Open-Meteo or GBIF.
 
