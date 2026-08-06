@@ -12,7 +12,7 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
 
 * Weather & Biodiversity ELT + Power BI
   * [Weather-data-ELT](./Weather-data-ELT): Open-Meteo weather ELT (Docker, Postgres, dbt, Airflow)
-  * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity: GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
+  * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity): GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
   * [GBIF & Weather dashboard (Power BI)](./GBIF_Weather_Dashboard.pbix)
 * Related standalone repo: [gbif-biodiversity-elt](https://github.com/vananhkieuthanh-arch/gbif-biodiversity-elt)
 
