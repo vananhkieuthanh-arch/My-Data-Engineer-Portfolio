@@ -2,7 +2,7 @@
 
 Welcome to my portfolio!
 
-My name is Van Anh. I build end-to-end data pipelines and analytics-ready models from API extract and landing zones through warehouse loads, dbt transformations, orchestration, and Power BI dashboards. I focus on reliable ELT layers, clear metric definitions, and insights that support decision-making.
+My name is Van Anh. I build end-to-end data pipelines and analytics-ready models — from API extract and landing zones through warehouse loads, dbt transformations, orchestration, and Power BI dashboards. I focus on reliable ELT layers, clear metric definitions, and insights that support decision-making.
 
 My technical toolkit includes Python, SQL, PostgreSQL, dbt, Apache Airflow, Docker, dimensional modeling (star schema), and Power BI (Power Query, DAX).
 
@@ -17,7 +17,7 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
 
 ## Projects Summary
 
-#### Python + Postgres + dbt + Airflow + Power BI | Weather & Biodiversity (Vietnam 2023)
+#### Python + Postgres + dbt + Airflow + Power BI | Weather × Biodiversity (Vietnam 2023)
 
 Built an end-to-end ELT stack to study how temperature and precipitation co-vary with bird observation volume and species richness in Vietnam (2023).
 
@@ -32,7 +32,6 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 
 **Key design choices:** medallion-style layers (raw -> staging -> marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
 
-
 ### Medallion layers
 
 | Layer | Schema | Role |
@@ -43,6 +42,15 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 | Meta | `meta` | ETL run log |
 
 ![Weather & Bird Observations Dashboard](./screenshots/weather_gbif_dashboard.png)
+
+## Data sources (acknowledgement)
+
+This project uses open data provided by:
+
+* **[Open-Meteo](https://open-meteo.com/)** — Historical weather API (temperature and precipitation) for Vietnam, 2023. Open-Meteo weather data is free for non-commercial use under the [Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) license / Open-Meteo terms.
+* **[GBIF](https://www.gbif.org/)** — Global Biodiversity Information Facility occurrence records (Aves / birds in Vietnam, 2023), accessed via the GBIF API and download services. GBIF data are shared by publishers under their respective licenses; please cite GBIF and follow [GBIF citation guidelines](https://www.gbif.org/citation-guidelines) when reusing.
+
+These sources are acknowledged with thanks; any analysis and dashboards in this portfolio are my own work and do not represent Open-Meteo or GBIF.
 
 ## Stack
 
