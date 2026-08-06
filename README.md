@@ -22,16 +22,17 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
 
 Built an end-to-end ELT stack to study how temperature and precipitation co-vary with bird observation volume and species richness in Vietnam (2023).
 
+![### Architecture overview](./screenshots/Architecture.png)
+
 - **Extract / land:** Open-Meteo weather API and GBIF occurrence data into a file landing zone  
 - **Load:** Idempotent loads into Postgres `raw` tables  
 - **Transform:** dbt staging -> dimensions/facts -> month-grain marts (`year_month_key` join)  
 - **Orchestrate:** Airflow DAGs for extract -> load -> `dbt run` / `dbt test`  
-- **Analyze:** Power BI dashboard for monthly weather vs observations and species richness  
+- **Analyze:** Power BI dashboard for monthly weather vs observations and species richness
+- **Containerize:** Containerized everything with Docker
 
 **Key design choices:** medallion-style layers (raw -> staging -> marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
 
-### Architecture overview
-(./screenshots/Architecture.png)
 
 ### Medallion layers
 
