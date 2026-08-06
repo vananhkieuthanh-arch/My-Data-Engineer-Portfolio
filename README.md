@@ -2,7 +2,7 @@
 
 Welcome to my portfolio!
 
-My name is Van Anh. I build end-to-end data pipelines and analytics-ready models â€” from API extract and landing zones through warehouse loads, dbt transformations, orchestration, and Power BI dashboards. I focus on reliable ELT layers, clear metric definitions, and insights that support decision-making.
+My name is Van Anh. I build end-to-end data pipelines and analytics-ready models from API extract and landing zones through warehouse loads, dbt transformations, orchestration, and Power BI dashboards. I focus on reliable ELT layers, clear metric definitions, and insights that support decision-making.
 
 My technical toolkit includes Python, SQL, PostgreSQL, dbt, Apache Airflow, Docker, dimensional modeling (star schema), and Power BI (Power Query, DAX).
 
@@ -10,9 +10,9 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
 
 ## Portfolio Projects
 
-* Weather Ã— Biodiversity ELT + Power BI
-  * [Weather-data-ELT](./Weather-data-ELT) â€” Open-Meteo weather ELT (Docker, Postgres, dbt, Airflow)
-  * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity) â€” GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
+* Weather & Biodiversity ELT + Power BI
+  * [Weather-data-ELT](./Weather-data-ELT): Open-Meteo weather ELT (Docker, Postgres, dbt, Airflow)
+  * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity: GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
   * [GBIF & Weather dashboard (Power BI)](./GBIF_Weather_Dashboard.pbix)
 * Related standalone repo: [gbif-biodiversity-elt](https://github.com/vananhkieuthanh-arch/gbif-biodiversity-elt)
 
