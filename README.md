@@ -1,4 +1,4 @@
-﻿# Data Engineer Portfolio - Van Anh
+# Data Engineer Portfolio - Van Anh
 
 Welcome to my portfolio!
 
@@ -14,6 +14,7 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
   * [Weather-data-ELT](./Weather-data-ELT): Open-Meteo weather ELT (Docker, Postgres, dbt, Airflow)
   * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity): GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
   * [GBIF & Weather dashboard (Power BI)](./GBIF_Weather_Dashboard.pbix)
+* Related standalone repo: [gbif-biodiversity-elt](https://github.com/vananhkieuthanh-arch/gbif-biodiversity-elt)
 
 ## Projects Summary
 
@@ -24,10 +25,79 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 - **Extract / land:** Open-Meteo weather API and GBIF occurrence data into a file landing zone  
 - **Load:** Idempotent loads into Postgres `raw` tables  
 - **Transform:** dbt staging -> dimensions/facts -> month-grain marts (`year_month_key` join)  
-- **Orchestrate:** Airflow DAGs for extract â†’ load â†’ `dbt run` / `dbt test`  
+- **Orchestrate:** Airflow DAGs for extract -> load -> `dbt run` / `dbt test`  
 - **Analyze:** Power BI dashboard for monthly weather vs observations and species richness  
 
 **Key design choices:** medallion-style layers (raw -> staging -> marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
+
+### Architecture overview
+
+```mermaid
+flowchart LR
+  subgraph Sources
+    OM[Open-Meteo API]
+    GBIF[GBIF API / Download CSV]
+  end
+
+  subgraph Landing["Landing zone (files)"]
+    LW[data/landing/weather]
+    LG[data/landing/occurrences]
+  end
+
+  subgraph Warehouse["PostgreSQL"]
+    RAW[(raw)]
+    STG[(staging - dbt)]
+    MARTS[(marts - dbt)]
+  end
+
+  AF[Apache Airflow]
+  PBI[Power BI dashboard]
+
+  OM --> LW --> RAW
+  GBIF --> LG --> RAW
+  RAW --> STG --> MARTS --> PBI
+  AF -.->|extract -> load -> dbt run/test| LW
+  AF -.-> LG
+  AF -.-> RAW
+  AF -.-> STG
+  AF -.-> MARTS
+```
+
+### Medallion layers
+
+```mermaid
+flowchart TB
+  B["Bronze / raw<br/>API payloads + typed raw tables"]
+  S["Silver / staging<br/>cleaned, renamed, typed views"]
+  G["Gold / marts<br/>dims, facts, month-grain marts"]
+
+  B --> S --> G
+```
+
+| Layer | Schema | Role |
+|-------|--------|------|
+| Bronze | `raw` | Landed API/CSV data + JSONB payload where applicable |
+| Silver | `staging` | Cleaned / renamed models (dbt) |
+| Gold | `marts` | `dim_*`, `fct_*`, weather & species-richness marts |
+| Meta | `meta` | ETL run log |
+
+### Airflow orchestration
+
+```mermaid
+flowchart LR
+  E[extract_data] --> L[load_data] --> R[dbt_run] --> T[dbt_test]
+```
+
+### Analytics join (month grain)
+
+Weather and bird marts meet in Power BI on **country + `year_month_key`** (Vietnam, 2023):
+
+```mermaid
+flowchart LR
+  W[mart_weather_by_month] --> K["year_month_key + country_code"]
+  S[mart_species_richness_by_month] --> K
+  K --> D[Power BI<br/>temp / precip vs observations and richness]
+```
 
 ![Weather & Bird Observations Dashboard](./screenshots/weather_gbif_dashboard.png)
 
@@ -56,5 +126,3 @@ Thank you for visiting my portfolio.
 * Email: vananh.kieuthanh@gmail.com
 * LinkedIn: https://www.linkedin.com/in/van-anh-kieu-thanh/
 * Data Analyst portfolio: https://github.com/vananhkieuthanh-arch/My-Data-Analyst-Portfolio
-
-
