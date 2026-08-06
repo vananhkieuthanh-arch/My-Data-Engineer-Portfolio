@@ -23,7 +23,7 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 
 - **Extract / land:** Open-Meteo weather API and GBIF occurrence data into a file landing zone  
 - **Load:** Idempotent loads into Postgres `raw` tables  
-- **Transform:** dbt staging â†’ dimensions/facts â†’ month-grain marts (`year_month_key` join)  
+- **Transform:** dbt staging -> dimensions/facts -> month-grain marts (`year_month_key` join)  
 - **Orchestrate:** Airflow DAGs for extract â†’ load â†’ `dbt run` / `dbt test`  
 - **Analyze:** Power BI dashboard for monthly weather vs observations and species richness  
 
