@@ -27,3 +27,4 @@ airflow/logs/
 
 # Documentation
 docs/
+src/test_*
