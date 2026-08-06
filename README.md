@@ -14,11 +14,10 @@ This portfolio showcases Data Engineering / Analytics Engineering projects that 
   * [Weather-data-ELT](./Weather-data-ELT): Open-Meteo weather ELT (Docker, Postgres, dbt, Airflow)
   * [ELT Pipeline - GBIF Biodiversity](./ELT%20Pipeline%20-%20GBIF%20Biodiversity): GBIF bird occurrences ELT (Docker, Postgres, dbt, Airflow)
   * [GBIF & Weather dashboard (Power BI)](./GBIF_Weather_Dashboard.pbix)
-* Related standalone repo: [gbif-biodiversity-elt](https://github.com/vananhkieuthanh-arch/gbif-biodiversity-elt)
 
 ## Projects Summary
 
-#### Python + Postgres + dbt + Airflow + Power BI | Weather Ã— Biodiversity (Vietnam 2023)
+#### Python + Postgres + dbt + Airflow + Power BI | Weather & Biodiversity (Vietnam 2023)
 
 Built an end-to-end ELT stack to study how temperature and precipitation co-vary with bird observation volume and species richness in Vietnam (2023).
 
@@ -28,7 +27,7 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 - **Orchestrate:** Airflow DAGs for extract â†’ load â†’ `dbt run` / `dbt test`  
 - **Analyze:** Power BI dashboard for monthly weather vs observations and species richness  
 
-**Key design choices:** medallion-style layers (raw â†’ staging â†’ marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
+**Key design choices:** medallion-style layers (raw + staging + marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
 
 ![Weather & Bird Observations Dashboard](./screenshots/weather_gbif_dashboard.png)
 
