@@ -31,37 +31,7 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 **Key design choices:** medallion-style layers (raw -> staging -> marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
 
 ### Architecture overview
-
-```mermaid
-flowchart LR
-  subgraph Sources
-    OM[Open-Meteo API]
-    GBIF[GBIF API / Download CSV]
-  end
-
-  subgraph Landing["Landing zone (files)"]
-    LW[data/landing/weather]
-    LG[data/landing/occurrences]
-  end
-
-  subgraph Warehouse["PostgreSQL"]
-    RAW[(raw)]
-    STG[(staging - dbt)]
-    MARTS[(marts - dbt)]
-  end
-
-  AF[Apache Airflow]
-  PBI[Power BI dashboard]
-
-  OM --> LW --> RAW
-  GBIF --> LG --> RAW
-  RAW --> STG --> MARTS --> PBI
-  AF -.->|extract -> load -> dbt run/test| LW
-  AF -.-> LG
-  AF -.-> RAW
-  AF -.-> STG
-  AF -.-> MARTS
-```
+(./screenshots/Architecture.png)
 
 ### Medallion layers
 
