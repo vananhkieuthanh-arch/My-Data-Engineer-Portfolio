@@ -27,7 +27,7 @@ Built an end-to-end ELT stack to study how temperature and precipitation co-vary
 - **Orchestrate:** Airflow DAGs for extract â†’ load â†’ `dbt run` / `dbt test`  
 - **Analyze:** Power BI dashboard for monthly weather vs observations and species richness  
 
-**Key design choices:** medallion-style layers (raw + staging + marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
+**Key design choices:** medallion-style layers (raw -> staging -> marts), star-schema modeling, distinct species name for richness (not a sum of monthly counts), and containerized local Postgres + Airflow.
 
 ![Weather & Bird Observations Dashboard](./screenshots/weather_gbif_dashboard.png)
 
